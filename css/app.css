@@ -1,0 +1,40 @@
+/* nav */
+body {
+    padding-top: 60px;
+}
+
+.simple-nav.navbar .container {
+    max-height: 50px;
+}
+
+.simple-nav .navbar-header {
+    width: 100%;
+}
+
+.simple-nav .navbar-btn {
+    margin-left: 10px;
+}
+
+
+/* posts */
+.tile.media {
+    padding: 6px;
+    min-height: 100px;
+    cursor: pointer;
+}
+
+.tile.media.selected {
+     padding: 5px;
+     border: 1px solid #777;
+     border-radius: 5px;
+}
+
+.tile.media:hover {
+    padding: 5px;
+    border: 1px solid #F5D04C;
+    border-radius: 5px;
+}
+
+.tile.media.selected:hover {
+     border-color: #CCC;
+}

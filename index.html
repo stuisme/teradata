@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-ng-app="reddit" >
+<head>
+    <title>Stuart Eaves - assessment</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body data-ng-controller="MainCtrl">
+    <div class="navbar navbar-inverse navbar-fixed-top simple-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Reddit Pics</a>
+                <button data-ng-hide="noneSelected" data-ng-click="hideSelected()" class="pull-right btn btn-sm btn-primary navbar-btn">Hide {{ postCount }} post(s)</button>
+                <button data-ng-hide="noneSelected" data-ng-click="deselectedAll()" class="pull-right btn btn-sm btn-default navbar-btn">Select none</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="alert alert-success" data-ng-show="loading">
+            Loading....
+        </div>
+        <div class="alert alert-danger" data-ng-show="error">
+            Error loading posts
+        </div>
+        <div class="alert alert-info" data-ng-hide="error || loading">
+            <i class="glyphicon glyphicon-info-sign" ></i> Select the posts you would like to hide.
+        </div>
+        <div class="media tile" data-ng-repeat="post in posts" data-ng-class="{'selected': post.selected }" data-ng-hide="post.hide" data-ng-click="selectPost(post)" data-ng-init="post.selected = false">
+            <div class="pull-left">
+                <img data-ng-src="{{post.data.thumbnail}}" class="media-object" >
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><small>{{post.data.author}}</small></h4>
+                <p>{{post.data.title}}</p>
+                <!-- strang mod offset due to 0 index -->
+                <button class="btn btn-xs btn-link" data-ng-show="($index % 3) == 2" data-ng-click="openImage(post); $event.stopPropagation()">
+                    <i class="glyphicon glyphicon-share"></i> Show in new window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
